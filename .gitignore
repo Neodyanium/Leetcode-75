@@ -1,0 +1,11 @@
+# Ignore IntelliJ project files
+.idea/
+*.iml
+
+# Ignore build files
+/out/
+*.class
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
