@@ -1,7 +1,7 @@
 package string.greatestCommonDivisor;
 
 /**
- * Since we want the greatest common divisor the we consider that there exists a substring that divides both the
+ * Since we want the greatest common divisor we consider that there exists a substring that divides both the
  * Strings.
  * we will work with this example
  * s1 = "ABABAB" , s2 = "ABAB"
@@ -19,13 +19,32 @@ package string.greatestCommonDivisor;
  * a basic validation check will first happen, it is clear that the gcd string is the exist in both the strings and
  * it can be present any number of times, in our taken example we know the output should be AB and we can see that AB
  * does exist 3 times in string s1 and 2 times in string s2. This same principe is used is here, if any substring we
- * are looking at is not able to divide both string 1 and string 2 then it can't be the answer hence retur false
+ * are looking at is not able to divide both string 1 and string 2 then it can't be the answer hence return false
  *
  * Now if it does divide both the strings, then we have a contendor for the gcd to exist, so the last line creates a
  * base string which is substring till that index and we use a replace function on both the string s1 and s2 and
  * replace the substring with "", and naturally if it is the gcd the strings will become empty and if both did become
  * empty then that substring is gcd and we can return true, so whether such gcd exist depend on both string after
  * replace we have returned the same.
+ *
+ * Time Complexity
+ * Outer Loop (gcdOfStrings):
+ * The loop iterates from min(str1.length(), str2.length()) down to 1, making at most O(N) iterations, where N = min(len(str1), len(str2)).
+ *
+ * isValid Function:
+ * Checking l1 % k and l2 % k takes O(1) time.
+ * Extracting base = s1.substring(0, k) takes O(k).
+ * Using replace() to check divisibility:
+ * s1.replace(base, "") and s2.replace(base, "") take O(len(s1) / k + len(s2) / k) in the worst case.
+ * This results in O(len(s1) / k + len(s2) / k) = O(N / k + M / k), where N = len(s1), M = len(s2).
+ * Since k can range from 1 to min(N, M), this can sum up to O(N + M) in the worst case.
+ *
+ * Overall Complexity:
+ * The worst case occurs when gcdOfStrings runs O(N) times and isValid takes O(N + M) for each check.
+ * This results in an O(N × (N + M)) complexity in the worst case.
+ *
+ * Space Complexity
+ * O(min(m,n)) it's for the base string we used
  *
  */
 class Solution1 {
