@@ -1,3 +1,5 @@
+package string.mergeStringAlternately;
+
 /**
  * The function mergeAlternately merges two strings (word1 and word2) by alternating characters, with a focus on using a single loop and determining the maximum length of the two strings beforehand.
  *
